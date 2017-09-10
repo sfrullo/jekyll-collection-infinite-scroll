@@ -1,0 +1,21 @@
+{
+  "name": "jekyll-collection",
+  "authors": [
+    "Simone <simone.castellani@nttdata.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "infinite-scroll": "^3.0.1",
+    "jquery": "^3.2.1"
+  }
+}
