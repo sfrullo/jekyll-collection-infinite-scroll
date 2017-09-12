@@ -14,13 +14,27 @@
 		}
 		.pagination__item {
 			height: 130px;
+			margin: 10px;
 			background-color: #ccc;
+		}
+		#placeholder {
+			height: 100vh;
+			display: flex;
+			flex-flow: column;
+			justify-content: center;
+			align-content: center;
+			align-items: center;
+		}
+		#placeholder p {
+			flex: 0;
+			font-weight: bold;
+			font-size: 36px;
 		}
 	</style>
 </head>
 <body>
 	
-	<div style="height: 1600px; background-color: pink;"></div>
+	<div id="placeholder"><p>Scroll me!</p></div>
 
 	<div id="container"></div>
 
