@@ -1,5 +1,8 @@
-<div class="pagination__item">
-	<span>
-		{{ page.tags }}
-	</span>
-</div>
+{% for i in (1..10) %}
+	{% assign tags = page.tags | split: ',' %}
+	<div class="pagination__item {% for t in tags %}{{ t }}{% endfor %}">
+		{% assign a =  page.tags | split: ',' | size | times: i | modulo: 9 %}
+		{% assign b =  page.tags | split: ',' | size | times: 9 | modulo: i %}
+		<img alt="" src="http://via.placeholder.com/3{{ a }}0x1{{ b }}0?text={{ page.tags }}"/>
+	</div>
+{% endfor %}

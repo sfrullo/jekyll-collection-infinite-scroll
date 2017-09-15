@@ -1,4 +1,4 @@
 ---
 layout: page
-tags: tag1
+tags: tag1, tag1-1
 ---

@@ -2,21 +2,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script src="/bower_components/jquery/dist/jquery.min.js"></script>
-	<script src="/bower_components/infinite-scroll/dist/infinite-scroll.pkgd.min.js"></script>
 	<style>
-		.page-load-status {
-			display: none; /* hidden by default */
-			padding-top: 20px;
-			border-top: 1px solid #DDD;
-			text-align: center;
-			color: #777;
-		}
-		.pagination__item {
-			height: 130px;
-			margin: 10px;
-			background-color: #ccc;
-		}
 		#placeholder {
 			height: 100vh;
 			display: flex;
@@ -24,19 +10,48 @@
 			justify-content: center;
 			align-content: center;
 			align-items: center;
+			margin-bottom: 20px;
+		}
+		#placeholder:after{
+			clear: both;
 		}
 		#placeholder p {
 			flex: 0;
 			font-weight: bold;
 			font-size: 36px;
 		}
+		.page-load-status {
+			display: none; /* hidden by default */
+			padding-top: 20px;
+			border-top: 1px solid #DDD;
+			text-align: center;
+			color: #777;
+		}
+		#container {
+			width: 90vw;
+			margin: 0 auto;
+		}
+		.pagination__item {
+			margin-bottom: 10px;
+			float: left;
+		}
+		.grid__col-sizer {
+			width: 32%;
+		}
+		.grid__gutter-sizer { 
+			width: 2%; 
+		}
+
 	</style>
 </head>
 <body>
 	
 	<div id="placeholder"><p>Scroll me!</p></div>
 
-	<div id="container"></div>
+	<div id="container">
+		<div class="grid__col-sizer"></div>
+		<div class="grid__gutter-sizer"></div>
+	</div>
 
 	<div class="page-load-status">
 		<div class="loader-ellips infinite-scroll-request">
@@ -54,14 +69,56 @@
 		<a class="pagination__next" href="/pages/2">Next page</a>
 	</p>
 
+	<script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+	<script type="text/javascript" src="/bower_components/imagesloaded/imagesloaded.pkgd.min.js"></script>
+	<script type="text/javascript" src="/bower_components/infinite-scroll/dist/infinite-scroll.pkgd.min.js"></script>
+	<script type="text/javascript" src="/bower_components/isotope/dist/isotope.pkgd.min.js"></script>
 	<script type="text/javascript">
-		$("#container").load("/pages/index.html");
-		$("#container").infiniteScroll({
-			path: '/pages/{{#}}',
-			append: '.pagination__item',
-			status: '.page-load-status',
-			hideNav: '.pagination',
+
+		$(document).ready( function() {
+
+			console.log('Init ...');
+
+			// Main content container
+			var $container = $('#container');
+
+			console.log('Load ...');
+			$container.load("/pages/index.html");
+
+			console.log('Init masonry ...');
+			var $grid = $container.masonry({
+				itemSelector: 'none', // select none at first
+				columnWidth: '.grid__col-sizer',
+				gutter: '.grid__gutter-sizer',
+				percentPosition: true,
+				// nicer reveal transition
+				visibleStyle: { opacity: 1 },
+				hiddenStyle: { opacity: 0 },
+			});
+
+			// get Masonry instance
+			var msnry = $grid.data('masonry');
+
+			// initial items reveal
+			console.log('Init imagesloaded ...');
+			$grid.imagesLoaded( function() {
+				$grid.masonry( 'option', { itemSelector: '.pagination__item' });
+				var $items = $grid.find('.pagination__item');
+				$grid.masonry( 'appended', $items );
+			});
+
+			console.log('Init infiniteScroll ...');
+			$grid.infiniteScroll({
+				path: '/pages/{{#}}',
+				append: '.pagination__item',
+				status: '.page-load-status',
+				hideNav: '.pagination',
+				outlayer: msnry,
+			})
+
 		});
+
 	</script>
 
 </body>
