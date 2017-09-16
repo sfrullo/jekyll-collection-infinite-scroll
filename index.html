@@ -36,10 +36,11 @@
 			float: left;
 		}
 		.grid__col-sizer {
-			width: 32%;
+			width: 350px;
+			height: auto;
 		}
 		.grid__gutter-sizer { 
-			width: 2%; 
+			width: 10px;
 		}
 
 	</style>
@@ -91,7 +92,8 @@
 				itemSelector: 'none', // select none at first
 				columnWidth: '.grid__col-sizer',
 				gutter: '.grid__gutter-sizer',
-				percentPosition: true,
+				percentPosition: false,
+				stagger: 100,
 				// nicer reveal transition
 				visibleStyle: { opacity: 1 },
 				hiddenStyle: { opacity: 0 },
