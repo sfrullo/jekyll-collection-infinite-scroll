@@ -2,84 +2,50 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<style>
-		#placeholder {
-			height: 100vh;
-			display: flex;
-			flex-flow: column;
-			justify-content: center;
-			align-content: center;
-			align-items: center;
-			margin-bottom: 20px;
-		}
-		#placeholder:after{
-			clear: both;
-		}
-		#placeholder p {
-			flex: 0;
-			font-weight: bold;
-			font-size: 36px;
-		}
-		.page-load-status {
-			display: none; /* hidden by default */
-			padding-top: 20px;
-			border-top: 1px solid #DDD;
-			text-align: center;
-			color: #777;
-		}
-		#container {
-			width: 90vw;
-			margin: 0 auto;
-		}
-		.pagination__item {
-			margin-bottom: 10px;
-			float: left;
-		}
-		.grid__col-sizer {
-			width: 350px;
-			height: auto;
-		}
-		.grid__gutter-sizer { 
-			width: 10px;
-		}
-
-	</style>
+	<link rel="stylesheet" href="/css/main_css_file.css">
 </head>
 <body>
 	
 	<div id="placeholder"><p>Scroll me!</p></div>
 
+	<ul class="menu">
+		<li class="menu_item"><a href="#container" data-filter="filter1">filter1</a></li>
+		<li class="menu_item"><a href="#container" data-filter="filter2">filter2</a></li>
+		<li class="menu_item"><a href="#container" data-filter="filter3">filter3</a></li>
+		<li class="menu_item"><a href="#container" data-filter="filter4">filter4</a></li>
+	</ul>
+
 	<div id="container">
 		<div class="grid__col-sizer"></div>
-		<div class="grid__gutter-sizer"></div>
-	</div>
-
-	<div class="page-load-status">
-		<div class="loader-ellips infinite-scroll-request">
-			<span class="loader-ellips__dot"></span>
-			<span class="loader-ellips__dot"></span>
-			<span class="loader-ellips__dot"></span>
-			<span class="loader-ellips__dot"></span>
+		<div class="grid__gutter-sizer"></zdiv>
 		</div>
-		<p class="infinite-scroll-last">End of content</p>
-		<p class="infinite-scroll-error">No more pages to load</p>
-	</div>
 
-	<!-- pagination has path -->
-	<p class="pagination">
-		<a class="pagination__next" href="/pages/2">Next page</a>
-	</p>
+		<div class="page-load-status">
+			<div class="loader-ellips infinite-scroll-request">
+				<span class="loader-ellips__dot"></span>
+				<span class="loader-ellips__dot"></span>
+				<span class="loader-ellips__dot"></span>
+				<span class="loader-ellips__dot"></span>
+			</div>
+			<p class="infinite-scroll-last">End of content</p>
+			<p class="infinite-scroll-error">No more pages to load</p>
+		</div>
 
-	<script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
-	<script type="text/javascript" src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
-	<script type="text/javascript" src="/bower_components/imagesloaded/imagesloaded.pkgd.min.js"></script>
-	<script type="text/javascript" src="/bower_components/infinite-scroll/dist/infinite-scroll.pkgd.min.js"></script>
-	<script type="text/javascript" src="/bower_components/isotope/dist/isotope.pkgd.min.js"></script>
-	<script type="text/javascript">
+		<!-- pagination has path -->
+		<p class="pagination">
+			<a class="pagination__next" href="/pages/2">Next page</a>
+		</p>
 
-		$(document).ready( function() {
+		<script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+		<script type="text/javascript" src="/bower_components/imagesloaded/imagesloaded.pkgd.min.js"></script>
+		<script type="text/javascript" src="/bower_components/infinite-scroll/dist/infinite-scroll.pkgd.min.js"></script>
+		<script type="text/javascript" src="/bower_components/isotope/dist/isotope.pkgd.min.js"></script>
+		<script type="text/javascript">
 
-			console.log('Init ...');
+			$(document).ready( function() {
+
+				console.log('Init ...');
 
 			// Main content container
 			var $container = $('#container');
@@ -117,6 +83,18 @@
 				status: '.page-load-status',
 				hideNav: '.pagination',
 				outlayer: msnry,
+			})
+
+			$container.isotope({
+				itemSelector: '.pagination__item',
+				percentPosition: false,
+				masonry: msnry
+			})
+
+			$(".menu_item").click(function (el) {
+				console.log(el)
+				var filter = el.target.dataset["filter"];
+				$grid.isotope({ filter : filter });
 			})
 
 		});
