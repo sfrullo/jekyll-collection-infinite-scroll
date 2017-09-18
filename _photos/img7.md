@@ -1,4 +1,4 @@
 ---
 layout: page
-tags: tag7
+tags: tag7 filter3
 ---
