@@ -16,6 +16,8 @@
   ],
   "dependencies": {
     "infinite-scroll": "^3.0.1",
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "isotope": "^3.0.4",
+    "imagesloaded": "^4.1.3"
   }
 }
