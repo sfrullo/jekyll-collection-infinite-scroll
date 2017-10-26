@@ -10,7 +10,7 @@
 	&:after{
 		clear: both;
 	}
-	
+
 	& p {
 		flex: 0;
 		font-weight: bold;
@@ -26,28 +26,25 @@
 	color: #777;
 }
 
-#container {
-	width: 90vw;
+
+#grid {
+	width: 98vw;
 	margin: 0 auto;
-	
-	&:after{
-		clear: both;
-	}
+}
+
+.grid__col-sizer {
+	width: 30%;
+	height: auto;
+}
+.grid__gutter-sizer {
+	width: 3%;
 }
 
 .pagination__item {
 	margin-bottom: 10px;
 	width: 350px;
-	
+
 	& img {
 		width: 100%;
 	}
-}
-
-.grid__col-sizer {
-	width: 350px;
-	height: auto;
-}
-.grid__gutter-sizer { 
-	width: 10px;
 }
