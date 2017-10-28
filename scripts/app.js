@@ -29,8 +29,9 @@ requirejs( [
             itemSelector: 'none', // select none at first
             columnWidth: '.' + consts.masonry.columnWidth,
             gutter: '.' + consts.masonry.gutter,
-            percentPosition: true,
+            percentPosition: false,
             stagger: 100,
+            fitWidth: true,
             visibleStyle: { opacity: 1 },
             hiddenStyle: { opacity: 0 },
         });
