@@ -17,9 +17,11 @@ requirejs( [
     'imagesloaded/imagesloaded',
     'infinite-scroll/dist/infinite-scroll.pkgd',
     'app/utils',
-    'app/consts'
+    'app/consts',
+    'photoswipe/dist/photoswipe',
+    'photoswipe/dist/photoswipe-ui-default'
     ],
-    function( Masonry, imagesLoaded, InfiniteScroll, Utils, consts ) {
+    function( Masonry, imagesLoaded, InfiniteScroll, Utils, consts, PhotoSwipe, PhotoSwipeUI_Default ) {
 
         console.log('Init ...');
         var container = document.getElementById(consts.masonry.container);
