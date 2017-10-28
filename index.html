@@ -1,46 +1,16 @@
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
+---
+layout: default
+---
 
-	<div id="placeholder"><p>Scroll me!</p></div>
+<div id="placeholder"><p>Scroll me!</p></div>
 
-	<ul class="menu">
-		<li class="menu_item"><a href="#container" data-filter="filter1">filter1</a></li>
-		<li class="menu_item"><a href="#container" data-filter="filter2">filter2</a></li>
-		<li class="menu_item"><a href="#container" data-filter="filter3">filter3</a></li>
-		<li class="menu_item"><a href="#container" data-filter="filter4">filter4</a></li>
-	</ul>
+<ul class="menu">
+	<li class="menu_item"><a href="#container" data-filter="filter1">filter1</a></li>
+	<li class="menu_item"><a href="#container" data-filter="filter2">filter2</a></li>
+	<li class="menu_item"><a href="#container" data-filter="filter3">filter3</a></li>
+	<li class="menu_item"><a href="#container" data-filter="filter4">filter4</a></li>
+</ul>
 
-	<div class="grid-container">
-		<div id="grid">
-			<div class="grid__col-sizer"></div>
-			<div class="grid__gutter-sizer"></div>
-		</div>
-	</div>
+{% include masonry-grid.html %}
 
-	<div class="page-load-status">
-		<div class="loader-ellips infinite-scroll-request">
-			<span class="loader-ellips__dot"></span>
-			<span class="loader-ellips__dot"></span>
-			<span class="loader-ellips__dot"></span>
-			<span class="loader-ellips__dot"></span>
-		</div>
-		<p class="infinite-scroll-last">End of content</p>
-		<p class="infinite-scroll-error">No more pages to load</p>
-	</div>
-
-	<!-- pagination has path -->
-	<p class="pagination">
-		<a class="pagination__next" href="/pages/2">Next page</a>
-	</p>
-
-	<script type="text/javascript" data-main="scripts/app.js" src="scripts/require.js"></script>
-
-</body>
-</html>
+<script type="text/javascript" data-main="scripts/app.js" src="bower_components/requirejs/require.js"></script>
