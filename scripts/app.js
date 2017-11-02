@@ -14,13 +14,15 @@ requirejs.config({
         photoswipeui: 'photoswipe/dist/photoswipe-ui-default',
         utils: '../scripts/app/utils',
         consts: '../scripts/app/consts',
-        layout: '../scripts/app/layout'
+        layout: '../scripts/app/layout',
+        gallery: '../scripts/app/gallery',
     }
 });
 
 // Start the main app logic.
-requirejs(['layout'], function (layout) {
+requirejs(['layout', 'gallery', "consts"], function(Layout, Gallery, Consts) {
 
-    layout.init();
+    Layout.init();
+    var gallery = new Gallery();
 
 });
